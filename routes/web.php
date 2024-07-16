@@ -1,7 +1,10 @@
 <?php
 
+use App\Livewire\CardSearch;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('card-search');
 });
+
+Route::get('card_search', CardSearch::class)->name('card-search');
