@@ -14,5 +14,7 @@ class Card extends Model
         'name',
         'effects',
         'pendulumEffects',
+        'image_full',
+        'image_cropped',
     ];
 }

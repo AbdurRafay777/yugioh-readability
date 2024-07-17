@@ -19,8 +19,8 @@
         </div>
     </nav>
 
-    <main class="container mt-5">
-        <div class="p-5 rounded-0">
+    <main class="container">
+        <div class="p-3 rounded-0">
             {{ $slot }}
         </div>
     </main>

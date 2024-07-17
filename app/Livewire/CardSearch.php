@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
+use Livewire\Attributes\Title;
 use Livewire\Component;
 
 class CardSearch extends Component
@@ -17,15 +18,16 @@ class CardSearch extends Component
     public function searchCards()
     {
         if (Str::of($this->search)->trim()->isNotEmpty()) {
-            $url = $this->api.'?fname='.$this->search;
+            $url      = $this->api . '?fname=' . $this->search;
             $response = Http::get($url);
             if ($response->successful()) {
-                $data = $response->json();
+                $data          = $response->json();
                 $this->results = $data['data'];
             }
         }
     }
 
+    #[Title('Search Cards')]
     public function render()
     {
         return view('livewire.card-search')->layout('components.layouts.app');
