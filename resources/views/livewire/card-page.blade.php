@@ -11,15 +11,22 @@
         <div class="col-md-8">
             <div class="card rounded-0 bg-body-secondary">
                 <div class="card-body">
-                    <div class="row">
-                        <div class="col">
-                            Level/Rank: {{ $card['level'] }}
-                        </div>
-                    </div>
-                    <p class="card-text">{{ $card['desc'] }}</p>
+                    @if (!empty($leadingText))
+                        <p class="card-text">{!! nl2br($leadingText) !!}</p>
+                    @endif
+
+                    @if ($cardEffectFound && $isPendulum)
+                        <p class="card-text text-danger">[Pendulum Effect]</p>
+                        <p class="card-text">{!! nl2br($improvedPendulumEffects) !!}</p>
+                        <p class="card-text text-info">[Monster Effect]</p>
+                        <p class="card-text">{!! nl2br($improvedMainEffects) !!}</p>
+                    @elseif ($cardEffectFound || $isPendulum)
+                        <p class="card-text">{!! nl2br($improvedMainEffects) !!}</p>
+                    @else
+                        <p class="card-text">{!! nl2br(e($card['desc'])) !!}</p>
+                    @endif
                 </div>
             </div>
         </div>
     </div>
-</div>
 </div>
